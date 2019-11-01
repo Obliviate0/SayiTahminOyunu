@@ -36,7 +36,7 @@ public class Database extends SQLiteOpenHelper {
 
 
     private static final String DROP_SCORES_TABLE = "DROP TABLE IF EXISTS _scores";
-    private static final String CREATE_SCORES_TABLE = "CREATE TABLE IF NOT EXISTS _scores (_id INTEGER PRIMARY KEY, _amount REAL NOT NULL DEFAULT 0, _isExpense INTEGER NOT NULL DEFAULT 0, _description TEXT, _date TEXT)";
+    private static final String CREATE_SCORES_TABLE = "CREATE TABLE IF NOT EXISTS _scores (_id INTEGER PRIMARY KEY AUTOINCREMENT, _score INTEGER, _date TEXT)";
 
 
     @Override
@@ -82,7 +82,7 @@ public class Database extends SQLiteOpenHelper {
             db = this.getReadableDatabase();
             Cursor cursor = db.query(
                     "_scores",
-                    new String[]{"_id", "_score", "_date"},
+                    new String[]{"_score", "_date"},
                     null,
                     null,
                     null,

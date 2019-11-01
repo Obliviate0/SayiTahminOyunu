@@ -1,13 +1,13 @@
 package com.example.sayitahminoyunu;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
@@ -17,6 +17,7 @@ public class GuessActivity extends AppCompatActivity {
     private EditText InputNumber;
     private Button CheckButton;
     private int rndNumber;
+    private Database addRecord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,8 @@ public class GuessActivity extends AppCompatActivity {
                 // Tahmin Tutulan Sayıya Eşit İse
                 if (tahmin == rndNumber){
 
+                    Database database = new Database(GuessActivity.this);
+                    database.addRecord(new ExpenseModel(sayac));
 
                     //Sayaç 6ya Eşit Veya Küçükse Çıkacak Olan Sonuç Ekranı
                     if (sayac <= 6){
@@ -61,6 +64,7 @@ public class GuessActivity extends AppCompatActivity {
                         i.putExtra("frogKermit",true);
                         startActivity(i);
                         finish();
+
                     }
 
                     //Sayaç 6dan Büyükse Çıkacak Olan Sonuç Ekranı

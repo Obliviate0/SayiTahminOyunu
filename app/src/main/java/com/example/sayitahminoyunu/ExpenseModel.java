@@ -7,25 +7,17 @@ import static com.example.sayitahminoyunu.GuessActivity.sayac;
 public class ExpenseModel extends AppCompatActivity {
     private int id;
     private String date;
+    private int hamle = sayac;
 
     public ExpenseModel(int score) {
-        sayac = score;
+        this.id = id;
+        hamle = score;
         this.date = Utility.getNow();
     }
 
-    public ExpenseModel(int score, String date) {
-        sayac = score;
-        this.date = date;
-    }
-
-    public ExpenseModel(int id, int score, String date) {
-        this.id = id;
-        sayac = score;
-        this.date = date;
-    }
 
     public int getScore() {
-        return sayac;
+        return hamle;
     }
 
     public String getDate() {
@@ -41,7 +33,7 @@ public class ExpenseModel extends AppCompatActivity {
     }
 
     public void setScore(int score) {
-        sayac = score;
+        hamle = score;
     }
 
     public void setDate(String date) {
