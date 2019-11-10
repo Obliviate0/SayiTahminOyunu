@@ -1,20 +1,21 @@
 package com.example.sayitahminoyunu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ScoreActivity extends AppCompatActivity {
 
-    private Button buttonDeneme;
+public class ScoreActivity  extends AppCompatActivity {
 
-    private ListView listView;
+    Button returnMainMenu;
+    RecyclerView recyclerView;
 
 
     @Override
@@ -22,18 +23,28 @@ public class ScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
-        buttonDeneme = findViewById(R.id.buttonDeneme);
-        listView = findViewById(R.id.listVieww);
+        returnMainMenu = findViewById(R.id.buttonReturnMainMenu);
+        recyclerView = findViewById(R.id.liste);
 
-        //Butona Tiklayinca Ne Yapacagini Yaziyoruz
-        buttonDeneme.setOnClickListener(new View.OnClickListener() {
+        returnMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Database database = new Database(ScoreActivity.this);
-                ArrayList<ExpenseModel> lList = database.getAllRecords();
-                ArrayAdapter<ExpenseModel> adapter = new ArrayAdapter<>(ScoreActivity.this, android.R.layout.simple_list_item_1,android.R.id.text1, lList);
-                listView.setAdapter(adapter);
+                Intent i = new Intent(ScoreActivity.this,MainActivity.class);
+                startActivity(i);
+                finish();
             }
         });
+
+
+        LinearLayoutManager layoutManager= new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+    }
+
+    public void listExpenses(){
+        Database db = new Database(this);
+        ArrayList<ExpenseModel> myList = db.getAllRecords();
+        MyListAdapter adapter = new MyListAdapter(this, myList);
+        recyclerView.setAdapter(adapter);
     }
 }

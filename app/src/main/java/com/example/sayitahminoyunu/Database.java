@@ -36,7 +36,7 @@ public class Database extends SQLiteOpenHelper {
 
 
     private static final String DROP_SCORES_TABLE = "DROP TABLE IF EXISTS _scores";
-    private static final String CREATE_SCORES_TABLE = "CREATE TABLE IF NOT EXISTS _scores (_id INTEGER PRIMARY KEY AUTOINCREMENT, _score INTEGER, _date TEXT)";
+    private static final String CREATE_SCORES_TABLE = "CREATE TABLE IF NOT EXISTS _scores (_id INTEGER PRIMARY KEY, _score INTEGER, _date TEXT)";
 
 
     @Override
@@ -49,6 +49,7 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onCreate(db);
     }
+
     public void addRecord(ExpenseModel model) {
         SQLiteDatabase db = null;
         try {
@@ -73,6 +74,7 @@ public class Database extends SQLiteOpenHelper {
             }
         }
     }
+
     //Listeleme
     public ArrayList<ExpenseModel> getAllRecords() {
         SQLiteDatabase db = null;
@@ -87,8 +89,17 @@ public class Database extends SQLiteOpenHelper {
                     null,
                     null,
                     null,
-                    "_score ASC"
+                    "_date DESC"
             );
+            if (cursor != null && !cursor.isClosed() && cursor.moveToFirst()) {
+                do {
+                    modelList.add(new ExpenseModel(
+                            cursor.getInt(cursor.getColumnIndex("_id")),
+                            cursor.getInt(cursor.getColumnIndex("_score")),
+                            cursor.getString(cursor.getColumnIndex("_date"))
+                    ));
+                } while (cursor.moveToNext());
+            }
             assert cursor != null;
             cursor.close();
         } catch (Exception e) {

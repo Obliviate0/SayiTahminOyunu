@@ -10,9 +10,14 @@ public class ExpenseModel extends AppCompatActivity {
     private int hamle = sayac;
 
     public ExpenseModel(int score) {
-        this.id = id;
-        hamle = score;
+        this.hamle = score;
         this.date = Utility.getNow();
+    }
+
+    public ExpenseModel(int id, int score, String date) {
+        this.id = id;
+        this.hamle = score;
+        this.date = date;
     }
 
 
@@ -33,7 +38,7 @@ public class ExpenseModel extends AppCompatActivity {
     }
 
     public void setScore(int score) {
-        hamle = score;
+        this.hamle = score;
     }
 
     public void setDate(String date) {

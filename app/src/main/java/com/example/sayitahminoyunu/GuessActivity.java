@@ -17,7 +17,6 @@ public class GuessActivity extends AppCompatActivity {
     private EditText InputNumber;
     private Button CheckButton;
     private int rndNumber;
-    private Database addRecord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +54,27 @@ public class GuessActivity extends AppCompatActivity {
                 // Tahmin Tutulan Sayıya Eşit İse
                 if (tahmin == rndNumber){
 
-                    Database database = new Database(GuessActivity.this);
-                    database.addRecord(new ExpenseModel(sayac));
-
                     //Sayaç 6ya Eşit Veya Küçükse Çıkacak Olan Sonuç Ekranı
-                    if (sayac <= 6){
+                    if (sayac <= 5){
+
+                        // skoru al ve rakama cevirmeye calis
+                        String scoreString = getString(sayac);
+                        if (scoreString.equals("")) {
+                            scoreString = "0";
+                        }
+                        int score;
+                        try {
+                            // double yapmaya calis
+                            score = Integer.parseInt(scoreString);
+                        } catch (Exception e) {
+                            // yapamazsa sifir olsun
+                            score = 0;
+                        }
+
+                        ExpenseModel expenseModel = new ExpenseModel(score);
+                        Database db = new Database(GuessActivity.this);
+                        db.addRecord(expenseModel);
+
                         Intent i = new Intent(GuessActivity.this,ResultActivity.class);//Sonuc Ekranina Geciyoruz
                         i.putExtra("frogKermit",true);
                         startActivity(i);
@@ -68,7 +83,26 @@ public class GuessActivity extends AppCompatActivity {
                     }
 
                     //Sayaç 6dan Büyükse Çıkacak Olan Sonuç Ekranı
-                    if (sayac > 6){
+                    else {
+
+                        // skoru al ve rakama cevirmeye calis
+                        String scoreString = getString(sayac);
+                        if (scoreString.equals("")) {
+                            scoreString = "0";
+                        }
+                        int score;
+                        try {
+                            // double yapmaya calis
+                            score = Integer.parseInt(scoreString);
+                        } catch (Exception e) {
+                            // yapamazsa sifir olsun
+                            score = 0;
+                        }
+
+                        ExpenseModel expenseModel = new ExpenseModel(score);
+                        Database db = new Database(GuessActivity.this);
+                        db.addRecord(expenseModel);
+
                         Intent i = new Intent(GuessActivity.this,ResultActivity.class);//Sonuc Ekranina Geciyoruz
                         i.putExtra("frogKermit",false);
                         startActivity(i);
@@ -76,16 +110,19 @@ public class GuessActivity extends AppCompatActivity {
                     }
 
                 }
-                //Tahmin Tutulan Sayıdan Büyükse Verilecek Talimat
-                if (tahmin > rndNumber){
-                    StatusText.setText("Azalt");
-                }
-                //Tahmin Tutulan Sayıdan Küçükse Verilecek Talimat
-                if (tahmin < rndNumber){
-                    StatusText.setText("Arttır");
-                }
 
-                InputNumber.setText(""); //Tahmin Et Butonuna Bastıktan Sonra Girilen Veriyi Temizler
+                else {
+                    //Tahmin Tutulan Sayıdan Büyükse Verilecek Talimat
+                    if (tahmin > rndNumber) {
+                        StatusText.setText("Azalt");
+                    }
+                    //Tahmin Tutulan Sayıdan Küçükse Verilecek Talimat
+                    else {
+                        StatusText.setText("Arttır");
+                    }
+
+                    InputNumber.setText(""); //Tahmin Et Butonuna Bastıktan Sonra Girilen Veriyi Temizler
+                }
 
             }
         });
