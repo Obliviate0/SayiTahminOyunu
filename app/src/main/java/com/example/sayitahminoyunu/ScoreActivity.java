@@ -41,6 +41,12 @@ public class ScoreActivity  extends AppCompatActivity {
 
     }
 
+    public void onResume(){
+        super.onResume();
+        listExpenses();
+    }
+
+
     public void listExpenses(){
         Database db = new Database(this);
         ArrayList<ExpenseModel> myList = db.getAllRecords();

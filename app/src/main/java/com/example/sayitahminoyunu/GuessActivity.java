@@ -23,7 +23,7 @@ public class GuessActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess);
 
-        StatusText = findViewById(R.id.StatusText);
+        StatusText = findViewById(R.id.textStatus);
         InputNumber = findViewById(R.id.InputNumber);
         CheckButton = findViewById(R.id.CheckButton);
 
@@ -58,7 +58,7 @@ public class GuessActivity extends AppCompatActivity {
                     if (sayac <= 5){
 
                         // skoru al ve rakama cevirmeye calis
-                        String scoreString = getString(sayac);
+                        String scoreString = Integer.toString(sayac);
                         if (scoreString.equals("")) {
                             scoreString = "0";
                         }
@@ -86,7 +86,7 @@ public class GuessActivity extends AppCompatActivity {
                     else {
 
                         // skoru al ve rakama cevirmeye calis
-                        String scoreString = getString(sayac);
+                        String scoreString = Integer.toString(sayac);
                         if (scoreString.equals("")) {
                             scoreString = "0";
                         }

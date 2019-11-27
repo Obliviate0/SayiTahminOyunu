@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#23FDA6"
+    tools:context=".Guess2Activity">
+
+    <Button
+        android:id="@+id/buttonUp"
+        android:layout_width="154dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="350dp"
+        android:background="#02965B"
+        android:text="Arttır"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSayiGostege" />
+
+    <TextView
+        android:id="@+id/textRndGuess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:textAllCaps="true"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonDown"
+        android:layout_width="154dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="350dp"
+        android:background="#02965B"
+        android:text="Azalt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonUp"
+        app:layout_constraintTop_toBottomOf="@+id/textSayiGostege" />
+
+    <TextView
+        android:id="@+id/textSayiGostege"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
+        android:text="Tuttuğunuz Sayı = "
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

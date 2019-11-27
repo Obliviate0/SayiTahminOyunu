@@ -8,11 +8,20 @@
         android:id="@+id/item_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Skor Buraya"
+        android:gravity="center"
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/item_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_marginStart="16dp"
+        android:text="Tarih Buraya"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/item_score"/>
 </RelativeLayout>

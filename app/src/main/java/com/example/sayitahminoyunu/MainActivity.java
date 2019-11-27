@@ -12,6 +12,7 @@ import static com.example.sayitahminoyunu.GuessActivity.sayac;
 public class MainActivity extends AppCompatActivity {
     private Button buttonBaslat;
     private Button buttonScore;
+    private Button buttonGoGuess2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         buttonBaslat = findViewById(R.id.buttonBaslat);
         buttonScore = findViewById(R.id.buttonScore);
+        buttonGoGuess2 = findViewById(R.id.buttonGoGuess2);
 
         //Butona Tiklayinca Ne Yapacagini Yaziyoruz
         buttonBaslat.setOnClickListener(new View.OnClickListener() {
@@ -38,5 +40,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        buttonGoGuess2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, Guess2StartActivity.class);
+                startActivity(i);
+            }
+        });
+
     }
 }

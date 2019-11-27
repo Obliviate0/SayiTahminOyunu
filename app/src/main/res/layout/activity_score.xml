@@ -37,13 +37,13 @@ android:background="#23FDA6">
         </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/liste"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:layout_gravity="center"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp"/>
+        android:id="@+id/liste"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#02965B"/>
 
     </LinearLayout>

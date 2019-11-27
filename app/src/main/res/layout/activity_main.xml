@@ -52,4 +52,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MainTitleText" />
 
+    <Button
+        android:id="@+id/buttonGoGuess2"
+        android:layout_width="93dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="211dp"
+        android:layout_marginRight="211dp"
+        android:layout_marginBottom="87dp"
+        android:background="#02965B"
+        android:text="Oyun 2"
+        app:layout_constraintBottom_toTopOf="@+id/MainTitleText"
+        app:layout_constraintEnd_toStartOf="@+id/buttonScore"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

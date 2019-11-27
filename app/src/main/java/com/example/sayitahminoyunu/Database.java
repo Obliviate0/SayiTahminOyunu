@@ -84,12 +84,12 @@ public class Database extends SQLiteOpenHelper {
             db = this.getReadableDatabase();
             Cursor cursor = db.query(
                     "_scores",
-                    new String[]{"_score", "_date"},
+                    new String[]{"_id","_score", "_date"},
                     null,
                     null,
                     null,
                     null,
-                    "_date DESC"
+                    "_score ASC"
             );
             if (cursor != null && !cursor.isClosed() && cursor.moveToFirst()) {
                 do {
@@ -118,5 +118,27 @@ public class Database extends SQLiteOpenHelper {
         }
 
         return modelList;
+    }
+
+    public void deleteRecord(int id) {
+        SQLiteDatabase db = null;
+        try {
+            beginWriteLock();
+            db = this.getWritableDatabase();
+            db.delete("_cash", "_id=?", new String[]{String.valueOf(id)});
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                try {
+                    if (db.isOpen()) {
+                        db.close();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                endWriteLock();
+            }
+        }
     }
 }
